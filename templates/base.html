@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="container mt-4">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-warning">{{ messages[0] }}</div>
+    {% endif %}
+  {% endwith %}
+  <nav>
+    {% if current_user.is_authenticated %}
+      Olá, {{ current_user.username }}!
+      <a href="{{ url_for('meus_agendamentos') }}">Meus Agendamentos</a> |
+      <a href="{{ url_for('agendar') }}">Agendar</a> |
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
+    {% endif %}
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

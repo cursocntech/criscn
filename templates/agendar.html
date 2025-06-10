@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Agendar{% endblock %}
+{% block content %}
+<h2>Agendar Gabinete</h2>
+<form method="POST">
+  <label>Gabinete:</label>
+  <select class="form-select" name="gabinete">
+    {% for i in range(1,6) %}
+      <option value="{{i}}">Gabinete {{i}}</option>
+    {% endfor %}
+  </select>
+  <label>Turno:</label>
+  <select class="form-select" name="turno">
+    <option>Matutino</option>
+    <option>Vespertino</option>
+  </select><br>
+  <button class="btn btn-success" type="submit">Agendar</button>
+</form>
+{% endblock %}
